@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fincan Atlası — Telve Analizi</title>
+<meta name="description" content="Fincanının fotoğrafını çek, telvedeki sembolleri işaretli olarak gör, yorumunu oku ve arkadaşlarınla paylaş.">
+<meta property="og:title" content="Fincan Atlası — Fincanında neler var?">
+<meta property="og:description" content="Fotoğrafını çek, telvedeki sembolleri işaretli olarak gör, yorumunu oku.">
+<meta property="og:image" content="https://fincanatlasi.github.io/assets/og_image.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://fincanatlasi.github.io">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --plum: #2A1628;
+    --plum-light: #3A1F37;
+    --plum-deep: #1E0F1C;
+    --orange: #F97316;
+    --peach: #FFEDD5;
+    --cream: #FFF8ED;
+    --cream-dim: rgba(255,248,237,0.72);
+    --orange-dim: rgba(249,115,22,0.55);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--plum);
+    color: var(--cream);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  a { color: var(--orange); }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    background:
+      radial-gradient(ellipse at 20% 0%, rgba(249,115,22,0.14), transparent 55%),
+      linear-gradient(180deg, var(--plum-deep) 0%, var(--plum) 100%);
+    padding: 3.5rem 1.5rem 3rem;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(249,115,22,0.18);
+  }
+  .hero::before {
+    /* faint coffee-ground specks, no image request */
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(2px 2px at 12% 22%, var(--orange-dim), transparent),
+      radial-gradient(1.5px 1.5px at 28% 68%, var(--orange-dim), transparent),
+      radial-gradient(2px 2px at 58% 12%, var(--orange-dim), transparent),
+      radial-gradient(1.5px 1.5px at 82% 38%, var(--orange-dim), transparent),
+      radial-gradient(1.5px 1.5px at 93% 78%, var(--orange-dim), transparent),
+      radial-gradient(2px 2px at 44% 88%, var(--orange-dim), transparent);
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  .hero-inner {
+    position: relative;
+    max-width: 1040px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.05fr 0.85fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  .brand-row { display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.6rem; }
+  .brand-row img { width: 52px; height: 52px; border-radius: 14px; box-shadow: 0 4px 18px rgba(0,0,0,0.35); }
+  .brand-row span {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.65rem;
+    letter-spacing: 0.02em;
+    color: var(--orange);
+  }
+  .hero h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 400;
+    font-size: 2.5rem;
+    line-height: 1.25;
+    margin: 0 0 0.9rem;
+  }
+  .hero h1 em { font-style: normal; color: var(--orange); }
+  .hero p.lede { font-size: 1.05rem; color: var(--cream-dim); max-width: 34rem; margin: 0 0 1.9rem; }
+  .cta-row { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .play-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    background: var(--cream);
+    color: var(--plum-deep);
+    text-decoration: none;
+    padding: 0.75rem 1.3rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.98rem;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+    transition: transform 0.15s ease;
+  }
+  .play-badge:hover { transform: translateY(-1px); }
+  .play-badge svg { width: 22px; height: 22px; flex-shrink: 0; }
+  .play-badge .label { display: flex; flex-direction: column; line-height: 1.15; }
+  .play-badge .label small { font-weight: 400; font-size: 0.7rem; color: rgba(30,15,28,0.65); }
+  .rating-note { font-size: 0.85rem; color: var(--cream-dim); }
+  .hero-art { display: flex; justify-content: center; }
+  .phone {
+    width: 260px;
+    border-radius: 32px;
+    padding: 8px;
+    background: #120910;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.45), 0 0 0 1px rgba(249,115,22,0.25);
+  }
+  .phone img { display: block; width: 100%; height: auto; border-radius: 26px; }
+
+  /* ---------- Main content ---------- */
+  main { flex: 1; max-width: 960px; width: 100%; margin: 0 auto; padding: 3rem 1.5rem; }
+  .section-title {
+    font-family: Georgia, "Times New Roman", serif;
+    color: var(--orange);
+    font-size: 1.5rem;
+    margin: 0 0 1.4rem;
+    text-align: center;
+  }
+  .shots {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+  .shots figure { margin: 0; text-align: center; }
+  .shots img {
+    width: 100%;
+    height: auto;
+    border-radius: 18px;
+    border: 1px solid rgba(249,115,22,0.22);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+  }
+  .shots figcaption { font-size: 0.85rem; color: var(--cream-dim); margin-top: 0.55rem; }
+  .feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 3rem; }
+  .feature {
+    background: var(--plum-light);
+    border: 1px solid rgba(249,115,22,0.18);
+    border-radius: 14px;
+    padding: 1.1rem 1.2rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+  }
+  .feature .ficon {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    background: rgba(249,115,22,0.14);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .feature .ficon svg { width: 19px; height: 19px; stroke: var(--orange); fill: none; }
+  .feature strong { display: block; font-size: 0.98rem; }
+  .feature p { margin: 0.35rem 0 0; color: var(--cream-dim); font-size: 0.88rem; line-height: 1.5; }
+  .card {
+    background: var(--plum-light);
+    border: 1px solid rgba(249,115,22,0.25);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .card h2 { color: var(--orange); font-size: 1.05rem; margin: 0 0 0.6rem; }
+  .card p { margin: 0; color: var(--cream-dim); line-height: 1.6; }
+
+  /* ---------- Footer ---------- */
+  footer {
+    text-align: center;
+    padding: 2rem 1.5rem 2.5rem;
+    font-size: 0.85rem;
+    color: var(--cream-dim);
+    border-top: 1px solid rgba(249,115,22,0.14);
+  }
+  footer .signature {
+    display: block;
+    font-family: "Dancing Script", "Brush Script MT", cursive;
+    font-size: 1.35rem;
+    color: var(--orange-dim);
+    margin-top: 0.9rem;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 760px) {
+    .hero-inner { grid-template-columns: 1fr; text-align: center; }
+    .brand-row { justify-content: center; }
+    .hero p.lede { margin-left: auto; margin-right: auto; }
+    .cta-row { justify-content: center; }
+    .hero-art { order: -1; }
+    .phone { width: 210px; }
+    .shots { grid-template-columns: repeat(2, 1fr); }
+    .feature-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="brand-row">
+        <img src="assets/app_icon.png" alt="Fincan Atlası uygulama simgesi">
+        <span>FİNCAN ATLASI</span>
+      </div>
+      <h1>Fincanında <em>neler</em> var?</h1>
+      <p class="lede">Fincanının fotoğrafını çek; telvedeki sembolleri işaretli olarak gör, her birinin ne anlama geldiğini oku ve yorumunu istediğin arkadaşınla paylaş.</p>
+      <div class="cta-row">
+        <a class="play-badge" href="https://play.google.com/store/apps/details?id=app.fincanatlasi" aria-label="Google Play'den indirin">
+          <svg viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M48 32c-9 5-16 14-16 26v396c0 12 7 21 16 26l231-224L48 32z" fill="#00D6FF"/>
+            <path d="M279 256L48 32c2-1 4-2 6-2 6 0 12 2 17 5l280 160-72 61z" fill="#00F076"/>
+            <path d="M351 195l-72 61 72 61 96-55c14-8 14-28 0-36l-96-31z" fill="#FFD24D"/>
+            <path d="M279 256L71 479c5 3 11 5 17 5 6 0 12-2 17-5l246-142-72-81z" fill="#FF3A5E"/>
+          </svg>
+          <span class="label">
+            <small>Yakında</small>
+            Google Play
+          </span>
+        </a>
+        <span class="rating-note">Her gün 1 ücretsiz analiz</span>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="phone">
+        <img src="assets/shot_result.jpg" alt="Fincan Atlası sonuç ekranı: fincanda işaretlenmiş 5 sembol">
+      </div>
+    </div>
+  </div>
+</section>
+
+<main>
+  <h2 class="section-title">Nasıl çalışır?</h2>
+  <div class="shots">
+    <figure>
+      <img src="assets/shot_home.jpg" alt="Ana sayfa" loading="lazy">
+      <figcaption>Her gün ücretsiz hakkın</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/shot_guide.jpg" alt="Çekim rehberi" loading="lazy">
+      <figcaption>Dört fotoğraf çek</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/shot_result.jpg" alt="Sonuç ekranı" loading="lazy">
+      <figcaption>Sembolleri işaretli gör</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/shot_symbol.jpg" alt="Sembol ayrıntısı" loading="lazy">
+      <figcaption>Her sembolün anlamı</figcaption>
+    </figure>
+  </div>
+
+  <h2 class="section-title">Ne sunuyor?</h2>
+  <div class="feature-grid">
+    <div class="feature">
+      <span class="ficon"><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg></span>
+      <div>
+        <strong>Rehberli çekim</strong>
+        <p>Fincanın içi üç açıdan, tabağı bir kez. Fotoğraf net değilse hemen söyler, hakkın gitmez.</p>
+      </div>
+    </div>
+    <div class="feature">
+      <span class="ficon"><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+      <div>
+        <strong>İşaretli semboller</strong>
+        <p>Kuş, yol, halka, kalp… Her sembolün fincanda nerede olduğunu ve ne kadar belirgin olduğunu gör.</p>
+      </div>
+    </div>
+    <div class="feature">
+      <span class="ficon"><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4.5A2.5 2.5 0 0 1 4.5 2H12v18H4.5A2.5 2.5 0 0 0 2 22.5v-18Z"/><path d="M22 4.5A2.5 2.5 0 0 0 19.5 2H12v18h7.5a2.5 2.5 0 0 1 2.5 2.5v-18Z"/></svg></span>
+      <div>
+        <strong>Kısa ve tam yorum</strong>
+        <p>Genel enerji, yakın dönem, ilişkiler, iş ve para — sade ve samimi bir dille.</p>
+      </div>
+    </div>
+    <div class="feature">
+      <span class="ficon"><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-3.8-.9L3 21l1.9-5.2A8.4 8.4 0 1 1 21 11.5Z"/></svg></span>
+      <div>
+        <strong>WhatsApp'ta paylaş</strong>
+        <p>Falını arkadaşlarına gönder; yalnızca seçtiğin bölümler görünür, linki istediğin an kaldırırsın.</p>
+      </div>
+    </div>
+    <div class="feature">
+      <span class="ficon"><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.7-9h1.8a4.5 4.5 0 1 1 0 9Z"/></svg></span>
+      <div>
+        <strong>Bulutta geçmiş</strong>
+        <p>Telefon değişse de tüm yorumların hesabında kalır.</p>
+      </div>
+    </div>
+    <div class="feature">
+      <span class="ficon"><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+      <div>
+        <strong>Önce gizlilik</strong>
+        <p>Fotoğrafların herkese açık değildir; hiçbir yorum sen istemeden paylaşılmaz. Hesabını istediğin an silebilirsin.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Eğlence için</h2>
+    <p>Fincan Atlası yorumları eğlence ve kişisel düşünme içindir; kesin bilgi, kehanet ya da uzman tavsiyesi değildir.</p>
+  </div>
+</main>
+
+<footer>
+  &copy; 2026 Fincan Atlası
+  <span class="signature">A. Köseoğlu</span>
+</footer>
+
+</body>
+</html>
