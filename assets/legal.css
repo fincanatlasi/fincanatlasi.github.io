@@ -1,0 +1,65 @@
+/* Shared look for the legal pages (gizlilik/, kosullar/); colours match index.html. */
+:root {
+  --plum: #2A1628;
+  --plum-light: #3A1F37;
+  --plum-deep: #1E0F1C;
+  --orange: #F97316;
+  --cream: #FFF8ED;
+  --cream-dim: rgba(255,248,237,0.72);
+  --orange-dim: rgba(249,115,22,0.55);
+  --line: rgba(249,115,22,0.16);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--plum);
+  color: var(--cream);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+a { color: var(--orange); }
+header {
+  background: linear-gradient(180deg, var(--plum-deep) 0%, var(--plum) 100%);
+  border-bottom: 1px solid var(--line);
+  padding: 1.1rem 1rem;
+}
+.bar { max-width: 760px; margin: 0 auto; display: flex; align-items: center; gap: 0.7rem; }
+.bar a { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; color: var(--cream); }
+.bar img { width: 36px; height: 36px; border-radius: 10px; }
+.bar span { font-family: Georgia, "Times New Roman", serif; font-size: 1.2rem; }
+main { max-width: 760px; margin: 0 auto; padding: 2rem 1rem 3rem; }
+h1 { font-family: Georgia, "Times New Roman", serif; font-weight: normal; font-size: 2rem; margin: 0 0 0.3rem; }
+.meta { color: var(--cream-dim); font-size: 0.9rem; margin: 0 0 1.8rem; }
+h2 {
+  font-size: 1.15rem;
+  color: var(--orange);
+  margin: 2.2rem 0 0.6rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--line);
+}
+p, li { color: var(--cream); font-size: 1rem; }
+ul { padding-left: 1.2rem; }
+li { margin: 0.35rem 0; }
+.summary {
+  background: var(--plum-light);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1rem 1.2rem;
+}
+.summary ul { margin: 0.4rem 0 0; }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 0.93rem; }
+th, td { text-align: left; vertical-align: top; padding: 0.55rem 0.6rem; border-bottom: 1px solid var(--line); }
+th { color: var(--cream-dim); font-weight: 600; }
+nav.toc { font-size: 0.93rem; color: var(--cream-dim); }
+nav.toc a { color: var(--cream-dim); }
+footer {
+  text-align: center;
+  padding: 2rem 1rem 2.5rem;
+  font-size: 0.85rem;
+  color: var(--cream-dim);
+  border-top: 1px solid var(--line);
+}
+footer a { color: var(--cream-dim); margin: 0 0.4rem; }
+@media (max-width: 600px) { h1 { font-size: 1.6rem; } }
