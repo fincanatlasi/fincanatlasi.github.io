@@ -3,6 +3,17 @@
     "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {
       "namespace": "android_app",
+      "package_name": "app.fincanatlasi",
+      "sha256_cert_fingerprints": [
+        "D1:81:DA:47:CF:16:D3:21:CB:B4:FF:73:13:93:1B:8D:5B:BE:76:6D:17:A5:B0:CA:ED:76:98:F5:6C:B2:4C:CE",
+        "19:BA:0C:A0:A5:90:D8:2A:AD:2F:2C:19:B1:77:D6:EC:5D:DE:87:F4:C9:B0:4B:61:6D:94:8A:00:64:58:56:E4"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
       "package_name": "app.fincanatlasi.dev",
       "sha256_cert_fingerprints": ["FA:C6:17:45:DC:09:03:78:6F:B9:ED:E6:2A:96:2B:39:9F:73:48:F0:BB:6F:89:9B:83:32:66:75:91:03:3B:9C"]
     }
