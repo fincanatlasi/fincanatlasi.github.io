@@ -1,0 +1,10 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["56ZFBGX5U4.app.fincanatlasi"],
+        "components": [{ "/": "/f/*" }, { "/": "/davet/*" }]
+      }
+    ]
+  }
+}
