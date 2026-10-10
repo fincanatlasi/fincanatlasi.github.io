@@ -63,6 +63,7 @@
   <tr><td>Fal bilgileri (“Seni biraz tanıyalım”)</td><td>Doğum tarihi (18 yaş kontrolü ve burç için), cinsiyet veya “belirtmek istemiyorum”, isteğe bağlı ilişki durumu. Burcun doğum tarihinden hesaplanır</td><td>Senden</td></tr>
   <tr><td>İletişim / giriş</td><td>Telefon numarası (SMS ile doğrulama) veya e-posta adresi (e-postayla giriş). Apple veya Google ile girişte bu hizmetlerin paylaştığı hesap kimliği ve e-posta adresi</td><td>Senden, Apple/Google’dan</td></tr>
   <tr><td>Fincan fotoğrafları</td><td>Analiz için yüklediğin fotoğraflar ve kalite kontrol sonuçları (ör. “fincan çok uzakta”)</td><td>Senden</td></tr>
+  <tr><td>El fotoğrafı (yalnızca açık rızayla)</td><td>El falı için yüklediğin avuç içi fotoğrafı, kalite kontrol sonucu ve fotoğraftan çıkarılan çizgiler</td><td>Senden</td></tr>
   <tr><td>Analiz sonuçları</td><td>Bulunan semboller, fotoğraftaki konumları, yorum metni, sembollere verdiğin geri bildirim</td><td>Yapay zekâ analizi, senden</td></tr>
   <tr><td>Sosyal</td><td>Arkadaşlık istekleri, arkadaşlıklar, engellemeler, paylaşımlar ve paylaşım bağlantıları, davet kodları, şikâyetler</td><td>Senden</td></tr>
   <tr><td>Satın alma ve haklar</td><td>Satın alınan ürün, abonelik durumu, işlem kimlikleri, günlük ücretsiz hak ve izlenen ödüllü reklam kayıtları. Kart bilgilerini hiçbir zaman görmeyiz; ödemeyi Apple App Store veya Google Play alır</td><td>Mağazalar, RevenueCat, Google AdMob</td></tr>
@@ -72,7 +73,7 @@
   <tr><td>Destek</td><td>Destek formuna yazdığın mesaj</td><td>Senden</td></tr>
 </table>
 </div>
-<p>Fincan fotoğraflarında yüzün, belgelerin veya başka kişilerin görünmemesine dikkat etmeni rica ederiz. Uygulama yalnızca fincanı ve telveyi analiz eder.</p>
+<p>Fotoğraflarda yüzün, belgelerin veya başka kişilerin görünmemesine dikkat etmeni rica ederiz. Uygulama yalnızca fincanı ve telveyi ya da el falında avuç içini analiz eder; el fotoğrafı kimlik tespiti veya doğrulama için kullanılmaz.</p>
 
 <h2 id="amac">3. Amaçlar ve hukuki sebepler</h2>
 <ul>
@@ -82,6 +83,7 @@
   <li><strong>Hakları ve satın almaları yönetmek</strong> (günlük ücretsiz hakkın kötüye kullanımını önlemek, başarısız falda hakkı iade etmek dahil): sözleşmenin ifası (m. 5/2-c) ve meşru menfaat (m. 5/2-f).</li>
   <li><strong>Güvenlik, dolandırıcılığın ve kötüye kullanımın önlenmesi, hata ayıklama</strong>: meşru menfaat, m. 5/2-f.</li>
   <li><strong>Muhasebe ve yasal yükümlülükler</strong> (satın alma kayıtları): hukuki yükümlülük, m. 5/2-ç.</li>
+  <li><strong>El falı için avuç içi fotoğrafının işlenmesi</strong>: açık rıza, KVKK m. 5/1 ve elin kişiye özgü özellikleri bakımından m. 6/3. Rıza, ilk el falından önce ayrı olarak istenir (<a href="../acik-riza/#el">Açık Rıza Metni, 2. bölüm</a>). Vermezsen el falı başlatılamaz; diğer tüm özellikler aynen çalışır.</li>
   <li><strong>Anonim kullanım analitiği ve sembol geri bildirimlerinin kalite iyileştirmede kullanılması</strong>: açık rıza, m. 5/1. Bu rıza ayrı bir metinle istenir: <a href="../acik-riza/">Açık Rıza Metni</a>. Vermesen de uygulamayı tam olarak kullanırsın; uygulamanın Gizlilik ve güvenlik bölümünden istediğin zaman geri alabilirsin.</li>
 </ul>
 
@@ -96,6 +98,11 @@
   işleme hizmetiyle, biraz bekleyerek hazırlanabilir; gönderilen bilgiler aynıdır. Anthropic, bu hizmet kapsamında gönderilen verileri
   kendi modellerini eğitmek için kullanmaz ve yalnızca kendi kullanım koşullarında belirtilen sınırlı süre boyunca
   saklar.
+</p>
+<p>
+  <strong>El falı:</strong> açık rızanla yüklediğin avuç içi fotoğrafı da aynı şekilde, yalnızca çizgileri bulmak ve
+  yorumu yazmak için Anthropic’e gönderilir; yanında yukarıdaki bilgilerle aynı kişisel bilgiler gider. Ayrıntılar
+  <a href="../acik-riza/#el">Açık Rıza Metni</a>’ndedir.
 </p>
 <p>
   Sonuç otomatik üretilir ve <strong>eğlence ve kişisel düşünme amaçlıdır</strong>. Hakkında hukuki veya benzeri
@@ -116,7 +123,7 @@
 <table>
   <tr><th>Sağlayıcı</th><th>Ne için</th><th>Konum</th></tr>
   <tr><td>Supabase</td><td>Veritabanı, dosya depolama, giriş ve sunucu işlevleri</td><td>AB (Frankfurt, Almanya)</td></tr>
-  <tr><td>Anthropic</td><td>Fincan fotoğrafının yapay zekâ ile analizi</td><td>ABD</td></tr>
+  <tr><td>Anthropic</td><td>Fincan ve (açık rızayla) el fotoğrafının yapay zekâ ile analizi</td><td>ABD</td></tr>
   <tr><td>SMS doğrulama sağlayıcısı</td><td>Giriş kodunun telefonuna gönderilmesi</td><td>Türkiye veya yurt dışı</td></tr>
   <tr><td>Apple, Google</td><td>“Apple / Google ile devam et” girişi, uygulama içi satın alma, bildirim iletimi (Apple Push, Firebase Cloud Messaging)</td><td>ABD</td></tr>
   <tr><td>Expo (650 Industries)</td><td>Bildirimlerin cihazına iletilmesi (bildirim anahtarı ve bildirim metni), uygulama güncellemelerinin dağıtımı</td><td>ABD</td></tr>
@@ -135,6 +142,7 @@
 <h2 id="saklama">7. Saklama süreleri</h2>
 <ul>
   <li><strong>Fincan fotoğrafları:</strong> yüklendikten sonra en fazla <strong>365 gün</strong>. Süre dolunca otomatik silinir. Yorum metni ve semboller geçmişinde kalır; fotoğrafı silinmiş yorumda bu durum belirtilir. Bir yorumu kendin silersen yorum geçmişinden kalkar, paylaşımları iptal edilir ve fotoğrafları bir saat içinde kalıcı olarak silinir.</li>
+  <li><strong>El fotoğrafları:</strong> yüklendikten sonra en fazla <strong>30 gün</strong>; süre dolunca otomatik silinir. El falı rızanı geri alırsan bir saat içinde silinir. Yorum metni geçmişinde kalır.</li>
   <li><strong>Hesap verileri ve fal bilgileri:</strong> hesabın açık olduğu sürece. Fal bilgilerini Profil’den istediğin zaman değiştirebilirsin.</li>
   <li><strong>Mesaj kutusu ve hatırlatma kayıtları:</strong> hesabın açık olduğu sürece; hesabını sildiğinde birlikte silinir.</li>
   <li><strong>Hesabını sildiğinde:</strong> profilin, fotoğrafların, yorumların, hakların, arkadaşlıkların ve paylaşımların hemen silinir.</li>
